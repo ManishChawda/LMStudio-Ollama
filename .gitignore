@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Environment secrets
+.env
+.env.*
+
+# Generated benchmark results
+*.csv
+
+# OS files
+.DS_Store
+Thumbs.db
