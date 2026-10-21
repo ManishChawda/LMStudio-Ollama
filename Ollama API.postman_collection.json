@@ -1,0 +1,351 @@
+{
+	"info": {
+		"_postman_id": "5522f524-8846-4f7b-947c-905041dc1a17",
+		"name": "Ollama API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16183379"
+	},
+	"item": [
+		{
+			"name": "List Models",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ollama_url}}/api/tags",
+					"host": [
+						"{{ollama_url}}"
+					],
+					"path": [
+						"api",
+						"tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ruuning Models",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ollama_url}}/api/ps",
+					"host": [
+						"{{ollama_url}}"
+					],
+					"path": [
+						"api",
+						"ps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Load Model",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  //\"model\": \"gemma:latest\",\n  \"model\": \"docker-expert\",\n  \"prompt\": \"What is Docker?\",\n  \"stream\": false\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ollama_url}}/api/generate",
+					"host": [
+						"{{ollama_url}}"
+					],
+					"path": [
+						"api",
+						"generate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UnLoad Model",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"model\": \"gemma:latest\",\n  \"prompt\": \"What is Docker?\",\n  \"stream\": false,\n  \"keep_alive\": 0\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ollama_url}}/api/generate",
+					"host": [
+						"{{ollama_url}}"
+					],
+					"path": [
+						"api",
+						"generate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download Model",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"model\": \"llama3\",\n  \"stream\": false\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ollama_url}}/api/pull",
+					"host": [
+						"{{ollama_url}}"
+					],
+					"path": [
+						"api",
+						"pull"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Model",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"model\": \"llama3\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ollama_url}}/api/delete",
+					"host": [
+						"{{ollama_url}}"
+					],
+					"path": [
+						"api",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Chat",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"model\": \"gemma:latest\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"What is Docker?\"\n    }\n  ],\n  \"stream\": false\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ollama_url}}/api/chat",
+					"host": [
+						"{{ollama_url}}"
+					],
+					"path": [
+						"api",
+						"chat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Load Model as System",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"model\": \"gemma:latest\",\n  \"system\": \"You are a network administrator. Answer in exactly 3 short bullet points.\",\n  \"prompt\": \"What is Firewall?\",\n  \"stream\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ollama_url}}/api/generate",
+					"host": [
+						"{{ollama_url}}"
+					],
+					"path": [
+						"api",
+						"generate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Copy Model",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"source\": \"gemma:latest\",\n  \"destination\": \"gemma:test\",\n  \"stream\": false\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ollama_url}}/api/copy",
+					"host": [
+						"{{ollama_url}}"
+					],
+					"path": [
+						"api",
+						"copy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Model",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  //\"model\": \"gemma:latest\",\n  \"model\": \"docker-expert\",\n  \"from\": \"gemma:latest\",\n  \"system\": \"You are a helpful Docker expert.\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ollama_url}}/api/create",
+					"host": [
+						"{{ollama_url}}"
+					],
+					"path": [
+						"api",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OpenAI-Style",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ollama_url}}/v1/models",
+					"host": [
+						"{{ollama_url}}"
+					],
+					"path": [
+						"v1",
+						"models"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Model Details",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"gemma:latest\"\n}"
+				},
+				"url": {
+					"raw": "{{ollama_url}}/api/show",
+					"host": [
+						"{{ollama_url}}"
+					],
+					"path": [
+						"api",
+						"show"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "86a1740a-02ab-4878-b5e6-0f723de89611",
+		"name": "LM Studio API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16183379"
+	},
+	"item": [
+		{
+			"name": "Chat",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"model\": \"ministral-3-3b-instruct-2512\",\n  \"input\": \"What is Docker? Explain in two sentences.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{lmstudio_url}}/api/v1/chat",
+					"host": [
+						"{{lmstudio_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"chat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Loaded Instances",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{lmstudio_url}}/api/v1/models",
+					"host": [
+						"{{lmstudio_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"models"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Load Instances",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"ministral-3-3b-instruct-2512\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{lmstudio_url}}/api/v1/models/load",
+					"host": [
+						"{{lmstudio_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"models",
+						"load"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UnLoad Instances",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"instance_id\": \"ministral-3-3b-instruct-2512:3\"\n}"
+				},
+				"url": {
+					"raw": "{{lmstudio_url}}/api/v1/models/unload",
+					"host": [
+						"{{lmstudio_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"models",
+						"unload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Completion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"model\": \"ministral-3-3b-instruct-2512\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Explain what an API is in two sentences.\"\n    }\n  ],\n  \"temperature\": 0.7\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{lmstudio_url}}/v1/chat/completions",
+					"host": [
+						"{{lmstudio_url}}"
+					],
+					"path": [
+						"v1",
+						"chat",
+						"completions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
